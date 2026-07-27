@@ -24,3 +24,12 @@ manager:
   image: <manager-image>
   # the gpu-driver container tag
   tag: <manager-tag>
+
+devicePlugin:
+  repository: gcr.io
+  image: gke-release/nvidia-gpu-device-plugin
+  version: 1.0.25-gke.56
+
+installer:
+  repository: ghcr.io
+  image: gardenlinux/gardenlinux/kmodbuild

@@ -45,7 +45,7 @@ spec:
                     disabled:
                       type: boolean
                     image:
-                      default: gke-release/nvidia-gpu-device-plugin
+                      default: "{{ .Values.devicePlugin.image }}"
                       type: string
                     imagePullPolicy:
                       default: IfNotPresent
@@ -56,10 +56,10 @@ spec:
                         type: string
                       type: array
                     repository:
-                      default: gcr.io
+                      default: "{{ .Values.devicePlugin.repository }}"
                       type: string
                     version:
-                      default: 1.0.25-gke.56
+                      default: "{{ .Values.devicePlugin.version }}"
                       type: string
                   type: object
                 driverVersion:
@@ -67,7 +67,7 @@ spec:
                 installer:
                   properties:
                     image:
-                      default: gardenlinux/gardenlinux/kmodbuild
+                      default: "{{ .Values.installer.image }}"
                       type: string
                     imagePullPolicy:
                       default: IfNotPresent
@@ -78,7 +78,7 @@ spec:
                         type: string
                       type: array
                     repository:
-                      default: ghcr.io
+                      default: "{{ .Values.installer.repository }}"
                       type: string
                   type: object
                 nodeSelector:

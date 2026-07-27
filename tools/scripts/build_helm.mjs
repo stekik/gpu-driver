@@ -107,6 +107,21 @@ for (let doc of all) {
         doc.spec.template.spec.imagePullSecrets = 'imagePullSecretsReplaceMe'
     }
 
+    if (doc.kind === 'CustomResourceDefinition') {
+        const templatedDefaults = {
+            devicePlugin: ['repository', 'image', 'version'],
+            installer: ['repository', 'image'],
+        }
+        for (const version of doc.spec.versions) {
+            const specProps = version.schema.openAPIV3Schema.properties.spec.properties
+            for (const [section, fields] of Object.entries(templatedDefaults)) {
+                for (const field of fields) {
+                    specProps[section].properties[field].default = `{{ .Values.${section}.${field} }}`
+                }
+            }
+        }
+    }
+
     if (doc.kind === 'ClusterRoleBinding') {
         doc.roleRef.name = replaceName(doc.roleRef.name)
         for (let sub of doc.subjects) {

@@ -24,3 +24,12 @@ manager:
   image: kyma-project/prod/gpu-driver
   # the gpu-driver container tag
   tag: 0.4.3
+
+devicePlugin:
+  repository: gcr.io
+  image: gke-release/nvidia-gpu-device-plugin
+  version: 1.0.25-gke.56
+
+installer:
+  repository: ghcr.io
+  image: gardenlinux/gardenlinux/kmodbuild
