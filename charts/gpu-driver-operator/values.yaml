@@ -23,7 +23,7 @@ manager:
   # defaults to kyma-project/prod/gpu-driver
   image: kyma-project/prod/gpu-driver
   # the gpu-driver container tag
-  tag: 0.4.3
+  tag: 0.4.4
 
 devicePlugin:
   repository: gcr.io
